@@ -4,8 +4,9 @@ function App() {
   
 
   return (
-    <div if="app">
+    <div id="app">
       <NotesPage />
+      <h1>OIOIOI</h1>
     </div>
   )
 }
