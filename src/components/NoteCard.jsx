@@ -82,10 +82,13 @@ const NoteCard = ({ note }) => {
             </div>
             <div className="card-body">
                 <textarea
-                ref={textAreaRef}
+                    
+                    ref={textAreaRef}
                     style={{color: colors.colorText}}
                     defaultValue={body}
                     onInput={() => autoGrow(textAreaRef.current)}
+                    onFocus={() => {
+                        setZIndex(cardRef.current);}}
                 >
 
                 </textarea>
