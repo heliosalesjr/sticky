@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import Trash from "../icons/Trash";
-import { setNewOffset } from "../utils";
+import { setNewOffset, setZIndex } from "../utils";
 
 const NoteCard = ({ note }) => {
     const [position, setPositon] = useState(JSON.parse(note.position));
@@ -27,6 +27,7 @@ const NoteCard = ({ note }) => {
     }
 
     const mouseDown = (e) => {
+        setZIndex(cardRef.current);
         mouseStartPos.x = e.clientX;
         mouseStartPos.y = e.clientY;
  
