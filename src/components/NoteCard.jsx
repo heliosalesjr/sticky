@@ -58,9 +58,18 @@ const NoteCard = ({ note }) => {
         document.removeEventListener("mouseup", mouseUp);
 
         const newPosition = setNewOffset(cardRef.current);
-        db.notes.update(note.$id, { position: JSON.stringify(newPosition) });
+        saveData("position", newPosition);
     };
  
+    const saveData = async (key, value) => {
+        const payload = { [key]: JSON.stringify(value) };
+        try {
+            await db.notes.update(note.$id, payload);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <div
             ref={cardRef}
