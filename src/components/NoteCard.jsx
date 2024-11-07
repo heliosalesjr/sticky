@@ -4,6 +4,10 @@ import { setNewOffset, setZIndex, bodyParser } from "../utils";
 import { db } from "../appwrite/databases";
 
 const NoteCard = ({ note }) => {
+
+    const [saving, setSaving] = useState(false);
+    const keyUpTimer = useRef(null);
+
     const [position, setPositon] = useState(JSON.parse(note.position));
     const colors = JSON.parse(note.colors);
     const body = bodyParser(note.body);
@@ -68,6 +72,19 @@ const NoteCard = ({ note }) => {
         } catch (error) {
             console.error(error);
         }
+        setSaving(false);
+    };
+
+    const handleKeyUp = async () => {
+        setSaving(true);
+     
+        if (keyUpTimer.current) {
+            clearTimeout(keyUpTimer.current);
+        }
+     
+        keyUpTimer.current = setTimeout(() => {
+            saveData("body", textAreaRef.current.value);
+        }, 2000);
     };
 
     return (
@@ -91,6 +108,12 @@ const NoteCard = ({ note }) => {
             >
 
                 <Trash />
+                {saving && (
+                    <div className="card-saving">
+                        <span style={{ color: colors.colorText }}>Saving...</span>
+                    </div>
+                )}
+
             
             </div>
             <div className="card-body">
