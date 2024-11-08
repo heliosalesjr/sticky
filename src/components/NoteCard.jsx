@@ -118,7 +118,7 @@ const NoteCard = ({ note }) => {
             </div>
             <div className="card-body">
                 <textarea
-                    
+                    onKeyUp={handleKeyUp}
                     ref={textAreaRef}
                     style={{color: colors.colorText}}
                     defaultValue={body}
