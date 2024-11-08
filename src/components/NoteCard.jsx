@@ -104,7 +104,7 @@ const NoteCard = ({ note }) => {
                 
                 className="card-header"
                 onMouseDown = { mouseDown }
-                style={{backgroundColor: colors.colorHeder}}
+                style={{backgroundColor: colors.colorHeader}}
             >
 
                 <Trash />
