@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-//import { fakeData as notes } from "../assets/fakeData.js";
 import { db } from "../appwrite/databases";
 import { databases } from "../appwrite/config";
 import NoteCard from "../components/NoteCard";
