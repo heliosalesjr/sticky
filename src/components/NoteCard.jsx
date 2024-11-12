@@ -4,7 +4,7 @@ import Spinner from "../icons/Spinner";
 import { setNewOffset, setZIndex, bodyParser } from "../utils";
 import { db } from "../appwrite/databases";
 
-const NoteCard = ({ note, setNotes }) => {
+const NoteCard = ({ note }) => {
 
     const [saving, setSaving] = useState(false);
     const keyUpTimer = useRef(null);
@@ -112,7 +112,7 @@ const NoteCard = ({ note, setNotes }) => {
                 style={{backgroundColor: colors.colorHeader}}
             >
 
-                <DeleteButton noteId={note.$id} setNotes={setNotes} />
+                <DeleteButton noteId={note.$id}  />
 
                 {saving && (
                     <div className="card-saving">
