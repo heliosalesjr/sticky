@@ -6,10 +6,8 @@ import { NoteContext } from "../context/NoteContext";
 const DeleteButton = ({ noteId }) => {
     const { setNotes } = useContext(NoteContext);
     
-    const handleDelete = async (e) => {
-            const { setNotes } = useContext(NoteContext);
-
-        db.notes.delete(noteId);
+    const handleDelete = async () => {
+        await db.notes.delete(noteId); // Adicionei await para garantir que a exclusão seja assíncrona
         setNotes((prevState) =>
             prevState.filter((note) => note.$id !== noteId)
         );
